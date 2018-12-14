@@ -1,0 +1,24 @@
+{
+	"status":"mock",
+	"data": {
+	"total":"mock",
+	"result":  [
+	 {
+		"id":"mock",
+		"user": {
+		"id":"mock",
+		"code":"mock",
+		"name":"mock"
+	},
+	"signInTime":"mock",
+	"signOutTime":"mock",
+	"uuid":"mock",
+	"updatedUser":"mock",
+	"updatedAt":"mock",
+	"createdUser":"mock",
+	"createdAt":"mock"
+	}
+]
+},
+"message":"mock"
+}

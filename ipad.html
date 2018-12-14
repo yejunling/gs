@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" >
+    <title>工商签到</title>
+    <link rel="stylesheet" href="css/ipad.css">
+
+    <script src="js/tracking-min.js"></script>
+    <script src="js/face-min.js"></script>
+
+</head>
+<body>
+
+<div class="frame">
+    <div class="container">
+        <video id="video" preload autoplay loop muted></video>
+        <canvas id="canvas"></canvas>
+    </div>
+    <div id="bottom">
+        <span id="time">13:00</span>
+        <span><button onclick="signInClick(event)">签到</button></span>
+        <span><button onclick="InfoClick()">查看签到</button></span>
+        <span id="date">2018/12/24</span>
+        <span id="week">周一</span>
+    </div>
+</div>
+
+<div id="dialog">
+    <div id="dialogBody">
+        <div id="signInInfo">
+            <img id="face" src=""/>
+            <div id="name">姓名</div>
+            <div id="id">学号</div>
+            <div id="uuid">uuid</div>
+            <div class="okInfo">
+                <img src="img/ok.png" id="messageImg"/>
+                <span id="message">签到成功</span>
+            </div>
+        </div>
+        <div id="lookInfo">
+            <div id="table"></div>
+            <div id="pages">
+                <span>总数：12</span>
+                <span>跳到<input />页</span>
+                <spn @xlick="lastPage()" class="page"> 上一页 </spn>
+                <spn @xlick="nextPage()" class="page"> 下一页 </spn>
+            </div>
+        </div>
+        <label id="noDialog" onclick="noDialogClick()">X</label>
+    </div>
+</div>
+
+<script src="js/ipad.js"></script>
+
+</body>
+</html>
