@@ -17,8 +17,8 @@
       <file leaf-file-name="ipad.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ipad.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="44" column="37" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="37" />
+            <state relative-caret-position="449">
+              <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -26,23 +26,19 @@
       <file leaf-file-name="ipad.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/ipad.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="659">
-              <caret line="190" column="19" selection-start-line="190" selection-start-column="19" selection-end-line="190" selection-end-column="19" />
-              <caret line="193" column="19" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="19" />
+            <state relative-caret-position="449">
+              <caret line="157" column="31" lean-forward="true" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
               <folding>
                 <element signature="e#334#1412#0" />
                 <element signature="e#351#359#0" />
-                <element signature="e#394#430#0" />
                 <element signature="n#!!block;n#initVideo#0" />
-                <element signature="n#!!block;n#initDate#0" />
                 <element signature="n#!!block;n#signInClick#0" />
-                <element signature="n#!!block;n#InfoClick#0" />
                 <element signature="n#!!block;n#noDialogClick#0" />
-                <element signature="n#!!block;n#addTable#0" />
                 <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
                 <element signature="n#!!block;n#dataURLtoFile#0" />
+                <element signature="n#!!block;n#dateFormat#0" />
               </folding>
             </state>
           </provider>
@@ -98,16 +94,22 @@
       <find>context</find>
       <find>frame</find>
       <find>16px</find>
-      <find>dialog</find>
       <find>video</find>
       <find>row</find>
       <find>rowLength</find>
       <find>console</find>
       <find>.dialog-body</find>
+      <find>addTable</find>
+      <find>name</find>
+      <find>message</find>
+      <find>dialog</find>
       <find>lookInfo</find>
+      <find>pages</find>
+      <find>jumpChange</find>
       <find>signInInfo</find>
     </findStrings>
     <replaceStrings>
+      <replace>initTable</replace>
       <replace>#dialogBody</replace>
     </replaceStrings>
   </component>
@@ -119,8 +121,8 @@
       <list>
         <option value="$PROJECT_DIR$/js/jquery.min.js" />
         <option value="$PROJECT_DIR$/json/test.json" />
-        <option value="$PROJECT_DIR$/ipad.html" />
         <option value="$PROJECT_DIR$/css/ipad.css" />
+        <option value="$PROJECT_DIR$/ipad.html" />
         <option value="$PROJECT_DIR$/js/ipad.js" />
       </list>
     </option>
@@ -171,7 +173,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../MDMS/web/mdms-web" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -205,12 +207,12 @@
       <option name="presentableId" value="Default" />
       <updated>1544686400796</updated>
       <workItem from="1544686402291" duration="10049000" />
-      <workItem from="1544749402816" duration="15555000" />
+      <workItem from="1544749402816" duration="21430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25604000" />
+    <option name="totallyTimeSpent" value="31479000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
@@ -275,17 +277,14 @@
           <folding>
             <element signature="e#334#1412#0" />
             <element signature="e#351#359#0" />
-            <element signature="e#394#430#0" />
             <element signature="n#!!block;n#initVideo#0" />
-            <element signature="n#!!block;n#initDate#0" />
             <element signature="n#!!block;n#signInClick#0" />
-            <element signature="n#!!block;n#InfoClick#0" />
             <element signature="n#!!block;n#noDialogClick#0" />
-            <element signature="n#!!block;n#addTable#0" />
             <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#!!block;n#dataURLtoFile#0" />
+            <element signature="n#!!block;n#dateFormat#0" />
           </folding>
         </state>
       </provider>
@@ -315,13 +314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/json/signIn.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/ipad.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -329,32 +321,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/json/signIn.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="23" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ipad.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="44" column="37" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="37" />
+        <state relative-caret-position="449">
+          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/ipad.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="659">
-          <caret line="190" column="19" selection-start-line="190" selection-start-column="19" selection-end-line="190" selection-end-column="19" />
-          <caret line="193" column="19" selection-start-line="193" selection-start-column="19" selection-end-line="193" selection-end-column="19" />
+        <state relative-caret-position="449">
+          <caret line="157" column="31" lean-forward="true" selection-start-line="157" selection-start-column="31" selection-end-line="157" selection-end-column="31" />
           <folding>
             <element signature="e#334#1412#0" />
             <element signature="e#351#359#0" />
-            <element signature="e#394#430#0" />
             <element signature="n#!!block;n#initVideo#0" />
-            <element signature="n#!!block;n#initDate#0" />
             <element signature="n#!!block;n#signInClick#0" />
-            <element signature="n#!!block;n#InfoClick#0" />
             <element signature="n#!!block;n#noDialogClick#0" />
-            <element signature="n#!!block;n#addTable#0" />
             <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#0;n#!!top" expanded="true" />
             <element signature="n#!!block;n#dataURLtoFile#0" />
+            <element signature="n#!!block;n#dateFormat#0" />
           </folding>
         </state>
       </provider>

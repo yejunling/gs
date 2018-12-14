@@ -1,23 +1,21 @@
 var video = document.getElementById('video');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-var time = document.getElementById('time');
-var date = document.getElementById('date');
-var week = document.getElementById('week');
 var dialog = document.getElementById('dialog');
 var dialogBody = document.getElementById('dialogBody');
 var noDialog = document.getElementById('noDialog');
 var signInInfo = document.getElementById('signInInfo');
 var lookInfo = document.getElementById('lookInfo');
 var table = document.getElementById('table');
-var pages = document.getElementById('pages');
 var face = document.getElementById('face');
-var id = document.getElementById('id');
-var name = document.getElementById('name');
-var message = document.getElementById('message');
-var messageImg = document.getElementById('messageImg');
+
+var allPage = document.getElementById('allPage');
+var current = document.getElementById('current');
+
 //const baseUrl = 'http://gongshang.dev.tianheng-uestc.com'
 const baseUrl = 'http://192.168.253.69:9998'
+
+var limit = 10,offset = 0,curentPage = 1,pageCount = 1;
 
 var uuid;
 
@@ -58,17 +56,7 @@ if(typeof(UniversalTerminalShell) ===  'undefined'){
 }
 document.getElementById('uuid').innerHTML = `UUID:${uuid}`;
 
-window.onload = function() {
-    initDate();
-    initVideo();
 
-    dialog.addEventListener('click',()=>{
-        noDialogClick();
-    })
-    dialogBody.addEventListener('click',(e)=>{
-        e.stopPropagation();
-    })
-};
 
 function initVideo(){
 
@@ -97,6 +85,9 @@ function initVideo(){
 
 }
 function initDate(){
+    var time = document.getElementById('time');
+    var date = document.getElementById('date');
+    var week = document.getElementById('week');
     setInterval(function(){
         var _date = new Date();
         var year = _date.getFullYear();    //获取当前年份
@@ -118,6 +109,10 @@ function signInClick(e){
     dialog.style.display = 'block';
     signInInfo.style.display = 'block';
     lookInfo.style.display = 'none';
+    var id = document.getElementById('id');
+    var name = document.getElementById('name');
+    var message = document.getElementById('message');
+    var messageImg = document.getElementById('messageImg');
     context.drawImage(video, 0, 0, 300, 170);
     var snapData = canvas.toDataURL('image/png');
     var imgSrc = "data:image/png;" + snapData;
@@ -148,17 +143,20 @@ function InfoClick(){
     dialog.style.display = 'block';
     signInInfo.style.display = 'none';
     lookInfo.style.display = 'block';
-    addTable();
+    initTable(uuid,limit,offset);
 }
 function noDialogClick(){
     dialog.style.display = 'none';
 }
-function addTable() {
+function initTable(id,l,o) {
     var cols = [];
     var th = ['ID','编号','名称','签到时间','签出时间'];
-    Ajax.get(baseUrl+'/api/v1/face-recog/sign-in',(res)=>{
+    Ajax.get(`${baseUrl}/api/v1/face-recog/sign-in?uuid=${id}&limit=${l}&offset=${o}`,(res)=>{
         res = JSON.parse(res)
         cols = res.data.result;
+        pageCount = Math.ceil(res.data.total / 10);
+        allPage.innerHTML = `总页数：${pageCount}`;
+        current.innerHTML = 1;
 
         var tab="<table border='1' bordercolor='#F3F3F3' width='100%' style='padding:10px;'>";
 
@@ -172,7 +170,12 @@ function addTable() {
         {
             tab+="<tr style='height:30px;'>";
             let c = cols[i];
-            tab+="<td>"+c.id+"</td>"+"<td>"+c.id+"</td>"+"<td>"+c.id+"</td>"+"<td>"+c.signInTime+"</td>"+"<td>"+c.signOutTime+"</td>";
+            tab+="<td>"+c.id
+                +"</td>"+"<td>"+c.id+"</td>"+"<td>"
+                +c.id+"</td>"+"<td>"
+                +new Date(c.signInTime).format('yyyy-MM-dd hh:mm:ss')
+                +"</td>"+"<td>"
+                +new Date(c.signOutTime).format('yyyy-MM-dd hh:mm:ss')+"</td>";
             tab+="</tr>";
         }
         tab+="</table>"
@@ -188,8 +191,61 @@ function dataURLtoFile(dataurl, filename) {
     return new File([u8arr], filename, {type:mime});
 }
 function lastPage(){
-    console.log('分页')
+    if(curentPage === 1) return ;
+    curentPage -= 1;
+    initTable(uuid,limit,((curentPage - 1) * limit));
 }
 function nextPage(){
-    console.log('分页')
+    if(curentPage === pageCount) return ;
+    curentPage += 1;
+    initTable(uuid,limit,((curentPage - 1) * limit));
 }
+function jumpChange(newValue){
+    if(!/^[1-9]\d*$/.test(newValue)) {
+        console.log(curentPage)
+        document.getElementById('jump').value = curentPage;
+        return;
+    }
+    if(newValue > pageCount || newValue < 1) return ;
+    initTable(uuid,limit,((newValue - 1) * limit));
+}
+function dateFormat(){
+    Date.prototype.format = function (fmt) {
+        if(this.toString() == 'Invalid Date'){
+            return ''
+        };
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+}
+
+window.onload = function() {
+    dateFormat();
+    initDate();
+    initVideo();
+
+    dialog.addEventListener('click',()=>{
+        noDialogClick();
+    })
+    dialogBody.addEventListener('click',(e)=>{
+        e.stopPropagation();
+    })
+    var jump = document.getElementById('jump');
+    jump.addEventListener('keydown', function (e) {
+        if(event.keyCode == "13") {
+            jumpChange(e.target.value);
+        }
+    }, false)
+
+};

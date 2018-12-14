@@ -40,10 +40,11 @@
         <div id="lookInfo">
             <div id="table"></div>
             <div id="pages">
-                <span>总数：12</span>
-                <span>跳到<input />页</span>
-                <spn @xlick="lastPage()" class="page"> 上一页 </spn>
-                <spn @xlick="nextPage()" class="page"> 下一页 </spn>
+                <span id="allPage">总数：12</span>
+                <span>跳到<input id="jump"/>页</span>
+                <spn onclick="lastPage()" class="page"> 上一页 </spn>
+                <spn id="current"> 1 </spn>
+                <spn onclick="nextPage()" class="page"> 下一页 </spn>
             </div>
         </div>
         <label id="noDialog" onclick="noDialogClick()">X</label>
